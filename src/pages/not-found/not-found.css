@@ -1,0 +1,53 @@
+.not-found {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+.not-found__404 {
+  font: 400 140px/169px 'Inter', sans-serif;
+  color: var(--text-default);
+  margin: 0;
+}
+
+.not-found__text {
+  font: 400 16px/19px 'Inter', sans-serif;
+  color: var(--text-default);
+  margin: 0;
+}
+
+.not-found__button {
+  position: absolute;
+  bottom: 60px;
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+  background-color: transparent;
+  color: var(--input-default);
+  font: 400 14px/17px 'Inter', sans-serif;
+}
+
+@media screen and (max-width: 1279px) {
+  .not-found__button {
+    bottom: 222px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .not-found__404 {
+    font: 400 80px/97px 'Inter', sans-serif;
+  }
+
+  .not-found__text {
+    font: 400 12px/15px 'Inter', sans-serif;
+  }
+
+  .not-found__button {
+    bottom: 30px;
+    font: 400 12px/15px 'Inter', sans-serif;
+  }
+}

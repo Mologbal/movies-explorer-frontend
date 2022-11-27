@@ -1,0 +1,76 @@
+.moviesCard {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--background-fourth);
+}
+
+.moviesCard__name {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 0 18px;
+  height: 17px;
+  padding: 17px 0 0 16px;
+  font: 500 12px 'Inter', sans-serif;
+  color: var(--text-default);
+}
+
+.moviesCard__time {
+  display: block;
+  font: 400 11px/13px 'Inter', sans-serif;
+  color: var(--text-second);
+  padding-left: 14px;
+}
+
+.moviesCard__icon-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.moviesCard__img {
+  display: block;
+  width: 100%;
+}
+
+.moviesCard__icon {
+  width: 27px;
+  height: 27px;
+  margin-bottom: 10px;
+  margin-top: -5px;
+  padding-top: 0;
+  border-radius: 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  cursor: pointer;
+  border: 0;
+}
+
+.moviesCard__icon-liked {
+  background-image: url('../../images/likeDisable.svg');
+  background-color: var(--background-fourth);
+  margin-right: 16px;
+}
+
+.moviesCard__icon-liked_saved {
+  background-image: url('../../images/likeActive.svg');
+  background-color: var(--background-fourth);
+  margin-right: 16px;
+}
+
+.moviesCard__icon-delete {
+  background-image: url('../../images/dislike.svg');
+  background-color: var(--background-fourth);
+  margin-right: 16px;
+}
+
+@media screen and (max-width: 767px) {
+  .moviesCard__name {
+    margin-bottom: 15px;
+  }
+
+  .moviesCard__icon {
+    margin-top: -5px;
+    margin-right: 12px;
+  }
+}
