@@ -1,0 +1,13 @@
+.main {
+  display: grid;
+  min-height: 100vh;
+  max-width: 1280px;
+  grid-template-rows: 74px 1fr 172px;
+  margin: 0 auto;
+}
+
+@media screen and (max-width: 767px) {
+  .main {
+    grid-template-rows: 74px 1fr 243px;
+  }
+}

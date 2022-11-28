@@ -1,0 +1,119 @@
+.aboutProject {
+  background-color: var(--background-default);
+}
+
+.aboutProject__box {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 110px 70px 110px;
+}
+
+.aboutProject__about-project {
+  margin: 0 0 70px;
+}
+
+.aboutProject__info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 110px;
+  gap: 52px;
+}
+
+.aboutProject__stages {
+  margin: 0 0 26px;
+  font: 400 20px/24px 'Inter', sans-serif;
+  color: var(--text-default);
+  letter-spacing: -0.04em;
+}
+
+.aboutProject__plan {
+  margin: 0;
+  font: 400 14px/20px 'Inter', sans-serif;
+  color: var(--text-default);
+}
+
+.aboutProject__timeline {
+  display: grid;
+  grid-template-rows: 36px 36px;
+  grid-template-columns: 228px 1fr;
+  font: 400 14px/17px 'Inter', sans-serif;
+}
+
+.aboutProject__timeline-week {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #3DDC84;
+  color: #000000;
+}
+
+.aboutProject__timeline-weeks {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #303030;
+  color: var(--text-default);
+}
+
+.aboutProject__timeline-techno {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 912px;
+  color: var(--text-second);
+}
+
+@media screen and (max-width: 1279px) {
+  .aboutProject__box {
+    padding: 90px 50px 90px;
+  }
+
+  .aboutProject__info {
+    margin-bottom: 89px;
+    gap: 37px;
+  }
+
+  .aboutProject__timeline {
+    grid-template-columns: 140px 1fr;
+  }
+
+  .aboutProject__timeline-weeks {
+    max-width: 912px;
+  }
+
+  .aboutProject__stages {
+    margin-bottom: 20px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .aboutProject__box {
+    min-height: auto;
+    padding: 70px 18px 70px;
+  }
+
+  .aboutProject__about-project {
+    margin: 0 0 60px;
+  }
+
+  .aboutProject__info {
+    flex-direction: column;
+    margin-bottom: 60px;
+    gap: 56px;
+  }
+
+  .aboutProject__stages {
+    font: 400 18px/22px 'Inter', sans-serif;
+    margin: 0 0 16px;
+  }
+
+  .aboutProject__plan {
+    font: 400 11px/16px 'Inter', sans-serif;
+  }
+
+  .aboutProject__timeline {
+    grid-template-columns: 100px 1fr;
+    grid-template-rows: 35px 35px;
+    font: 400 11px/13px 'Inter', sans-serif;
+  }
+}

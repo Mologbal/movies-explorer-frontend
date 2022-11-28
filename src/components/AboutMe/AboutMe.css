@@ -1,0 +1,122 @@
+.aboutMe {
+  background-color: var(--background-default);
+}
+
+.aboutMe__content {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 110px 70px 125px;
+}
+
+.aboutMe__student {
+  margin: 0 0 66px;
+}
+
+.aboutMe__profile {
+  display: flex;
+  margin-bottom: 100px;
+  gap: 270px;
+  align-items: stretch;
+}
+
+.aboutMe__info {
+  display: grid;
+  grid-template-rows: auto auto 1fr auto;
+  grid-template-columns: 1fr;
+}
+
+.aboutMe__who {
+  margin: 0 0 18px;
+  letter-spacing: -0.04em;
+  color: var(--text-default);
+  font: 400 50px/58px 'Inter', sans-serif;
+}
+
+.aboutMe__job {
+  margin: 0 0 26px;
+  font: 500 18px/20px 'Inter', sans-serif;
+  color: var(--text-default);
+}
+
+.aboutMe__story {
+  margin: 0;
+  font: 400 14px/22px 'Inter', sans-serif;
+  color: var(--text-default);
+}
+
+.aboutMe__git {
+  font: 500 14px/17px 'Inter', sans-serif;
+  text-decoration: none;
+  color: var(--text-default);
+}
+
+.aboutMe__photo {
+  width: 270px;
+  display: block;
+  border-radius: 10px;
+}
+
+@media screen and (max-width: 1279px) {
+  .aboutMe__content {
+    padding: 90px 50px 90px;
+  }
+
+  .aboutMe__profile {
+    margin-bottom: 90px;
+    gap: 49px;
+  }
+
+  .aboutMe__who {
+    margin: 0 0 16px;
+    font: 400 40px/40px 'Inter', sans-serif;
+  }
+
+  .aboutMe__job {
+    margin: 0 0 20px;
+    font: 500 12px/18px 'Inter', sans-serif;
+  }
+
+  .aboutMe__story {
+    font: 400 12px/18px 'Inter', sans-serif;
+  }
+
+  .aboutMe__photo {
+    width: 255px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .aboutMe__content {
+    padding: 70px 14px 70px;
+  }
+
+  .aboutMe__student {
+    margin-bottom: 60px;
+  }
+
+  .aboutMe__profile {
+    flex-direction: column-reverse;
+    margin-bottom: 70px;
+    gap: 35px;
+  }
+
+  .aboutMe__who {
+    margin: 0 0 20px;
+    font: 400 30px/38px 'Inter', sans-serif;
+  }
+
+  .aboutMe__job {
+    font: 500 11px/16px 'Inter', sans-serif;
+  }
+
+  .aboutMe__story {
+    margin-bottom: 40px;
+    font: 400 11px/16px 'Inter', sans-serif;
+  }
+
+  .aboutMe__photo {
+    width: 100%;
+    max-width: 292px;
+    margin: 0 auto;
+  }
+}
