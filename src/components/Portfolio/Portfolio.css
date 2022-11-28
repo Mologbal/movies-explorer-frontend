@@ -1,7 +1,7 @@
 .portfolio__name {
   font: 400 18px/20px 'Inter', sans-serif;
   color: var(--text-second);
-  margin: 0 0 52px;
+  margin: 0 0 40px;
 }
 
 .portfolio__list {
@@ -16,7 +16,6 @@
   display: flex;
   justify-content: space-between;
   font: 400 30px/50px 'Inter', sans-serif;
-  margin-bottom: 9px;
   padding-bottom: 20px;
   border-bottom: 1px solid #424242;
   letter-spacing: -0.04em;
@@ -29,15 +28,21 @@
 }
 
 .portfolio__git {
+  display: flex;
+  width: 100%;
+  height: 71px;
+  align-items: center;
+  justify-content: space-between;
   color: var(--text-default);
   text-decoration: none;
 }
 
-.portfolio__list-project::after {
-  display: block;
-  font: 400 30px/60px 'Inter', sans-serif;
-  content: '↗';
+.portfolio__icon {
+  margin: 0;
+  height: 36px;
 }
+
+
 
 @media screen and (max-width: 1279px) {
   .portfolio__list-project {
@@ -48,11 +53,14 @@
 @media screen and (max-width: 767px) {
   .portfolio__name {
     font-size: 14px;
-    margin: 0 0 40px;
+    margin: 0 0 20px;
   }
 
+
   .portfolio__list-project {
-    margin-bottom: 19px;
+    height: 40px;
+    margin-bottom: 3px;
+    padding-bottom: 25px;
   }
 
   .portfolio__list-project,

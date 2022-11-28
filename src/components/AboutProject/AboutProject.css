@@ -44,7 +44,7 @@
   align-items: center;
   justify-content: center;
   background-color: #3DDC84;
-  color: var(--text-default);
+  color: #000000;
 }
 
 .aboutProject__timeline-weeks {

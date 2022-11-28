@@ -5,7 +5,7 @@
   padding: 62px 70px 30px;
   list-style-type: none;
   column-gap: 24px;
-  row-gap: 48px;
+  row-gap: 36px;
 }
 
 @media screen and (max-width: 1279px) {
@@ -13,7 +13,7 @@
     grid-template-columns: repeat(2, 1fr);
     padding: 70px 30px 30px;
     column-gap: 30px;
-    row-gap: 41px;
+    row-gap: 23px;
   }
 }
 
@@ -21,6 +21,6 @@
   .moviesСardList {
     grid-template-columns: 1fr;
     padding: 40px 10px 30px;
-    row-gap: 25px;
+    row-gap: 8px;
   }
 }

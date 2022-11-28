@@ -4,18 +4,18 @@ export function Portfolio() {
   return (
     <div className="portfolio">
       <h4 className="portfolio__name">Портфолио</h4>
-      <div className="portfolio__list">
-        <div className="portfolio__list-project">
+      <ul className="portfolio__list">
+        <li className="portfolio__list-project">
           {/* TODO после ревью стоит добавить точечные ссылки на мои проекты заместо просто гита */}
-          <a className='portfolio__git' href='https://github.com' target = 'blank'>Статичный сайт</a>
-        </div>
-        <div className="portfolio__list-project">
-          <a className='portfolio__git' href='https://github.com' target = 'blank'>Адаптивный сайт</a>
-        </div>
-        <div className="portfolio__list-project">
-          <a className='portfolio__git' href='https://github.com' target = 'blank'>Одностраничное приложение</a>
-        </div>
-      </div>
+          <a className='portfolio__git' href='https://github.com' target = 'blank'>Статичный сайт <p className='portfolio__icon'>↗</p></a>
+        </li>
+        <li className="portfolio__list-project">
+          <a className='portfolio__git' href='https://github.com' target = 'blank'>Адаптивный сайт <p className='portfolio__icon'>↗</p></a>
+        </li>
+        <li className="portfolio__list-project">
+          <a className='portfolio__git' href='https://github.com' target = 'blank'>Одностраничное приложение <p className='portfolio__icon'>↗</p></a>
+        </li>
+      </ul>
     </div>
   );
 };

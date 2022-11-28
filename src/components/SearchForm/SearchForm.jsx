@@ -7,7 +7,7 @@ import Button from '../Button/Button';
 export function SearchForm() {
     return (
         <div className="search-form-wrap">
-            <form name="search" className="search-form" method="get">
+            <form name="search" required className="search-form" method="get">
                 <div className="search-form__input-wrap">
                     <div className="search-form__film-box">
                         <img className="search-form__logo" src={icon} alt="Иконка поиска"></img>

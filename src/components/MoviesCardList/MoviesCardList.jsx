@@ -26,7 +26,7 @@ export function MoviesCardList({
         });
     }
     return (
-        <div className="moviesСardList">
+        <ul className="moviesСardList">
             {
                 demoCard.map((cards, index) => {
                     return <MoviesCard
@@ -36,6 +36,6 @@ export function MoviesCardList({
                         isSaved={Boolean(random(0, 2))}/>;
                 })
             }
-        </div>
+        </ul>
     );
 };

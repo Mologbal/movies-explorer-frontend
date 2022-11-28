@@ -52,14 +52,9 @@
   transform: translateY(-10px) rotateZ(-45grad);
 }
 
-@media screen and (max-width: 1279px) {
-  .burgerMenu {
-    display: flex;
-  }
-}
-
 @media screen and (max-width: 767px) {
   .burgerMenu {
+    display: flex;
     right: 10px;
   }
 

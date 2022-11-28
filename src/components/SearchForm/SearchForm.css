@@ -5,22 +5,21 @@
 .search-form {
   margin: 0 auto;
   padding-bottom: 43px;
-  border-bottom: 1px solid rgba(170, 170, 170, .2);
 }
 
 .search-form__input-wrap {
   display: flex;
   justify-content: space-between;
   margin-bottom: 20px;
-  border-radius: 8px;
+  border-radius: 9px;
   background-color: var(--background-fifth);
-  border: 1px solid rgba(170, 170, 170, .2);
 }
 
 .search-form__film-box {
   display: flex;
   height: 76px;
   background-color: var(--background-fifth);
+  border-radius: 9px;
 }
 
 .search-form__box {
@@ -61,6 +60,11 @@
   border: 0;
   font: 500 14px/18px 'Inter', sans-serif;
   color: #fff;
+}
+
+.search-form__button:hover {
+  opacity: .8;
+  transition: .2s ease-in all;
 }
 
 @media screen and (max-width: 1279px) {

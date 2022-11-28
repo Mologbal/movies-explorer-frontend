@@ -2,7 +2,7 @@ import './MoviesCard.css';
 
 export function MoviesCard({ isSaved, savedMovies = false, card }) {
   return (
-    <div className="moviesCard">
+    <li className="moviesCard">
       <img className="moviesCard__img" src={ card.img } alt={ card.nameRUS }></img>
       <p className="moviesCard__name">{ card.nameRUS }
       <button
@@ -19,6 +19,6 @@ export function MoviesCard({ isSaved, savedMovies = false, card }) {
       <div className="moviesCard__time">{ card.time }</div>
       <div className="moviesCard__icon-wrap">
       </div>
-    </div>
+    </li>
   );
 };

@@ -13,7 +13,7 @@
 .movies__more {
   display: flex;
   margin: auto;
-  padding: 72px 50px 70px 75px;
+  padding: 55px 50px 70px 75px;
 }
 
 .movies__more-button {
@@ -29,7 +29,7 @@
 
 @media screen and (max-width: 1279px) {
   .movies__more {
-    padding: 50px 30px 80px;
+    padding: 35px 30px 80px;
   }
 }
 

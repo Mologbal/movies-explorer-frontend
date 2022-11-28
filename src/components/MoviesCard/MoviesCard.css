@@ -19,6 +19,7 @@
   font: 400 11px/13px 'Inter', sans-serif;
   color: var(--text-second);
   padding-left: 14px;
+  padding-bottom: 14px;
 }
 
 .moviesCard__icon-wrap {
