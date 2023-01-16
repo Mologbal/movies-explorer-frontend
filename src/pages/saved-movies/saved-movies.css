@@ -1,0 +1,17 @@
+.saved-movies {
+  display: grid;
+  grid-template-rows: 70px 1fr 172px;
+  max-width: 1280px;
+  min-height: 100vh;
+  margin: 0 auto;
+}
+
+.saved-movies__box {
+  background-color: var(--background-default);
+}
+
+@media screen and (max-width: 767px) {
+  .saved-movies {
+    grid-template-rows: 74px 1fr 243px;
+  }
+}
