@@ -1,14 +1,15 @@
 import './Header.css';
 import React from 'react';
-import {useState} from 'react';
+import {useState, useContext} from 'react';
 import {useNavigate, Link} from 'react-router-dom';
 import Logo from '../Logo/Logo';
 import BurgerMenu from '../BurgerMenu/BurgerMenu';
 import Navigation from '../Navigation/Navigation';
 import Button from '../Button/Button';
-import {useSelector} from "react-redux";
+import {CurrentUserContext} from '../../context/currentUserContext';
 
 export function Header() {
+    const { currentUser } = useContext(CurrentUserContext);
     const history = useNavigate();
     function handleSignInClick() {
         history('/signin');
@@ -22,15 +23,12 @@ export function Header() {
         setIsOpen(!isOpen);
     }
 
-    //Используется store redux, если не разрешено - исправить
-    const {isUserLogged} = useSelector(state => state.user);
     return (
         <header className="header">
-            <div className={`header__box ${isUserLogged && 'header__box_logged'}`}>
+            <div className={`header__box ${currentUser.isLoggedIn && 'header__box_logged'}`}>
                 <Logo></Logo>
                 {
-                    isUserLogged
-                        ? (
+                    currentUser.isLoggedIn ? (
                             <> < div className = {
                                 `header__menu ${isOpen && 'header__menu_open'}`
                             } > <Navigation></Navigation>

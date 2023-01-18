@@ -1,0 +1,15 @@
+.error {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    bottom: calc(-350% + 20px);
+    display: block;
+    text-align: center;
+    color: var(--input-error);
+    font: 400 11px/13px 'Inter', sans-serif;
+    transition: opacity 350ms;
+  }
+  
+  .error:empty {
+    display: none;
+  }

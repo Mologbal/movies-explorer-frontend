@@ -33,3 +33,20 @@ body {
   background-color: var(--background-default);
   color: var(--text-default);
 }
+
+
+a,
+button {
+  transition: all 500ms;
+}
+
+a:hover,
+button:not(:disabled):hover {
+  opacity: .8;
+}
+
+button:disabled {
+  background-color: #f8f8f8;
+  color: #c2c2c2;
+  cursor: default;
+}

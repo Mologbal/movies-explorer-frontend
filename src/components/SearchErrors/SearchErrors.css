@@ -1,0 +1,13 @@
+.error {
+    color: var(--text-third);
+    font: 400 18px/20px 'Inter', sans-serif;
+    margin: 0 0 50px;
+    padding: 100px 150px 100px;
+    text-align: center;
+  }
+  
+  @media screen and (max-width: 767px) {
+    .error {
+      padding: 50px 30px 50px;
+    }
+  }

@@ -1,7 +1,7 @@
 import './AboutProject.css';
 import {Heading} from '../Heading/Heading';
 
-export const AboutProject = () => {
+export function AboutProject () {
     return (
         <section className="aboutProject">
             <div className="aboutProject__box">

@@ -1,7 +1,7 @@
 .filter {
   height: 52px;
   user-select: none;
-  display: flex;
+  display: inline-flex;
   gap: 14px;
   border-left: 1px solid grey;
   padding-left: 30px;
@@ -9,6 +9,7 @@
   margin: auto;
   margin-left: 0;
   margin-right: 30px;
+  cursor: pointer;
 }
 
 .filter .border {

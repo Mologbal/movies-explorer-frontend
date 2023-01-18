@@ -3,7 +3,7 @@ import logo from '../../images/photo.svg';
 import { Portfolio } from '../Portfolio/Portfolio';
 import { Heading } from '../Heading/Heading';
 
-export const AboutMe = () => {
+export function AboutMe() {
     return (
         <section className="aboutMe">
             <div className="aboutMe__content">

@@ -1,7 +1,7 @@
 .input {
   display: block;
   position: relative;
-  margin-bottom: 20px;
+  margin-bottom: 26px;
 }
 
 .input__input {
@@ -30,7 +30,7 @@
   display: block;
   font: 400 10px/12px 'Inter', sans-serif;
   color: var(--text-third);
-  margin-bottom: 11px;
+  margin-bottom: 10px;
 }
 
 .input__error {
@@ -40,5 +40,4 @@
   color: var(--input-error);
   font: 400 10px/12px 'Inter', sans-serif;
   top: calc(100% + 1px);
-  margin-top: 10px;
 }
