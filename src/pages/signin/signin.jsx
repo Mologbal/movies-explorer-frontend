@@ -44,13 +44,13 @@ export function SignIn() {
           })
           .catch(err => {
              if (err.status = 500) {
-              errorMessage(SERVER_ERROR);
+              errorMessage(WRONG_DATA);
             } 
             else if (err.status = 404) {
               errorMessage(NOT_FOUND_PAGE);
             }
             else if (err.status = 401) {
-              errorMessage(WRONG_DATA);
+              errorMessage(SERVER_ERROR);
             }
             else {
               errorMessage(BASIC_ERROR);

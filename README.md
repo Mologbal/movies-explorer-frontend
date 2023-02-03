@@ -3,4 +3,9 @@
 
 Ссылка на яндекс-диск с макетом - https://disk.yandex.ru/d/gFkKf1hDgR7euA
 
+Cсылка на Frontend, запущенный на виртуальной машине - https://molow.nomoredomains.icu.nomoredomains.rocks/signup
+
+Ссылка на BackEnd, запущенный на виртуальной машине - https://api.molow.nomoredomains.icu
+
+
 

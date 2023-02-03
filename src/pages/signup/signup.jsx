@@ -60,18 +60,18 @@ export const SignUp = () => {
             errorMessage(err.text);
           })
       })
-      .catch((error) => {
-         if (error.status = 500) {
+      .catch((err) => {
+         if (err.status === 409) {
           errorMessage(SERVER_ERROR);
-        } 
-        else if (error.status = 409) {
-          errorMessage(ALREADY_USED_EMAIL);
         }
-        else if (error.status = 404) {
+         else if (err.status === 500) {
+          errorMessage(BASIC_ERROR);
+        } 
+        else if (err.status === 404) {
           errorMessage(NOT_FOUND_PAGE);
         }
         else {
-          errorMessage(BASIC_ERROR);
+          errorMessage(ALREADY_USED_EMAIL);
         };
       })
       .finally(() => setIsPending(false));
