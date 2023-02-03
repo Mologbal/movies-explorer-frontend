@@ -1,18 +1,18 @@
 //Файлик для удобства
-import { MainPage } from './main/main';
+import { Main } from './main/main';
 import { Profile } from './profile/profile';
-import { MoviesPage } from  './movies/movies';
-import { SavedMoviesPage } from './saved-movies/saved-movies';
-import { SignInPage } from './signin/signin';
-import { SignUpPage } from './signup/signup';
-import { NotFoundPage } from './not-found/not-found';
+import { Movies } from  './movies/movies';
+import { SavedMovies } from './saved-movies/saved-movies';
+import { SignIn } from './signin/signin';
+import { SignUp } from './signup/signup';
+import { NotFound } from './not-found/not-found';
 
 export {
-  MainPage,
+  Main,
   Profile,
-  MoviesPage,
-  SavedMoviesPage,
-  SignInPage,
-  SignUpPage,
-  NotFoundPage,
+  Movies,
+  SavedMovies,
+  SignIn,
+  SignUp,
+  NotFound,
 };

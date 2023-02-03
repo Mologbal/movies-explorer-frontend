@@ -3,9 +3,4 @@
 
 Ссылка на яндекс-диск с макетом - https://disk.yandex.ru/d/gFkKf1hDgR7euA
 
-Работающий на ВМ Бэкенд диплома - https://api.molow.nomoredomains.icu
-Работающий на ВМ Фронтенд диплома - https://molow.nomoredomains.icu.nomoredomains.rocks
-
-Ссылка на пулл-реквест первой попытка сдачи диплома -  https://github.com/Mologbal/movies-explorer-frontend/pull/4
-
 

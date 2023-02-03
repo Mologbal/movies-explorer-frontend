@@ -43,6 +43,11 @@
   background-color: var(--background-trird);
   color: #FFFFFF;
   border: none;
+  outline: none;
+}
+
+.search-form__input:focus {
+  border-color: var(--input-default);
 }
 
 .search-form__input::placeholder {

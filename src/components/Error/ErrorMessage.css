@@ -1,0 +1,36 @@
+.errorMessage {
+    bottom: calc(-300% + 90px);
+    display: block;
+    text-align: center;
+    color: red;
+    font: 400 11px/13px 'Inter', sans-serif;
+    transition: opacity 500ms;
+    position: absolute;
+    left: 0;
+    width: 100%;
+  }
+
+  .error:empty {
+    display: none;
+  }
+
+  .successMessage {
+    bottom: calc(-300% + 90px);
+    display: block;
+    text-align: center;
+    color: green;
+    font: 400 11px/13px 'Inter', sans-serif;
+    transition: opacity 500ms;
+    position: absolute;
+    left: 0;
+    width: 100%;
+  }
+
+  @media screen and (max-width: 767px) {
+    .errorMessage {
+     bottom: 250px
+    }
+    .successMessage {
+      bottom: 250px
+     }
+  }

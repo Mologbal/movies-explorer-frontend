@@ -1,26 +1,81 @@
 import './signup.css';
 import Logo from '../../components/Logo/Logo';
-import Button from '../../components/Button/Button';
-import { useEffect } from 'react';
+import {Button} from '../../components/Button/Button';
 import { Inputs } from '../../components/Inputs/Inputs';
-import { Link } from 'react-router-dom';
-import { useFormAndValidation } from '../../hooks/useFormAndValidation';
+import { useFormAndValidation } from '../../validation/validation';
+import {Link, useNavigate} from 'react-router-dom';
+import {useContext, useEffect, useState} from 'react';
+import myContext from '../../constants/myContext';
+import {ErrorMessage} from '../../components/Error/ErrorMessage';
+import * as ProjectApi from '../../projectApi/ProjectApi';
+import {useErrorProfileMessage} from '../../errors/errors';
+import {
+  ALREADY_USED_EMAIL,
+  SERVER_ERROR,
+  NOT_FOUND_PAGE,
+  BASIC_ERROR
+} from '../../constants/constants'
 
-export function SignUpPage() {
-    const {
-        values,
-        errors,
-        handleChange,
-        setValues,
-    } = useFormAndValidation();
 
-    useEffect(() => {
-        setValues({name: 'Виталий', email: 'pochta@yandex.ru', password: 'password'});
-    }, [setValues]);
+export const SignUp = () => {
+  const {values, handleChange, errors, isValid, setValues } = useFormAndValidation();
+  const {error, errorMessage} = useErrorProfileMessage();
+  const [isPending, setIsPending] = useState(false);
+  const { thisuser, setUser } = useContext(myContext);
+  const navigate = useNavigate();
 
-    function handleSubmit(event) {
-        event.preventDefault();
+  useEffect(() => {
+    if (thisuser.isLoggedIn) {
+      navigate('/');
     }
+  }, [thisuser])
+
+  useEffect(() => {
+    setValues({
+      name: '',
+      email: '',
+      password: '',
+    });
+  }, [setValues]);
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    setIsPending(true);
+    ProjectApi.regiser(values)
+      .then(() => {
+        ProjectApi.authorise({
+          email: values.email,
+          password: values.password,
+        })
+          .then((user) => {
+            setUser({
+              name: user.name,
+              email: user.email,
+              id: user._id,
+              isLoggedIn: true,
+            });
+            navigate('/movies');
+          })
+          .catch((err) => {
+            errorMessage(err.text);
+          })
+      })
+      .catch((error) => {
+         if (error.status = 500) {
+          errorMessage(SERVER_ERROR);
+        } 
+        else if (error.status = 409) {
+          errorMessage(ALREADY_USED_EMAIL);
+        }
+        else if (error.status = 404) {
+          errorMessage(NOT_FOUND_PAGE);
+        }
+        else {
+          errorMessage(BASIC_ERROR);
+        };
+      })
+      .finally(() => setIsPending(false));
+  }
 
     return (
         <form name="signup" method="post" className="signup" onSubmit={handleSubmit}>
@@ -32,12 +87,15 @@ export function SignUpPage() {
                     placeholder="Имя"
                     value={values.name}
                     handler={handleChange}
+                    pattern="[A-Za-z А-Яа-яёЁ]{2,30}"
                     min="2"
                     max="30"
                     errorText={errors.name}></Inputs>
                 <Inputs
                     name="email"
+                    type="email"
                     placeholder="E-mail"
+                    pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,10})+$"
                     value={values.email}
                     handler={handleChange}
                     min="2"
@@ -53,7 +111,8 @@ export function SignUpPage() {
                     errorText={errors.password}></Inputs>
             </div>
             <div className="signup__buttons">
-                <Button className="signup__button" type="submit">
+                <Button className="signup__button" type="submit" disabled={!(isValid && !isPending)}>
+                <ErrorMessage>{ error }</ErrorMessage>
                     Зарегистрироваться
                 </Button>
                 <div className="signup__text">
