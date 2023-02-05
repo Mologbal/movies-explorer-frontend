@@ -5,7 +5,7 @@ import {Button} from '../../components/Button/Button';
 import {useNavigate} from 'react-router-dom';
 import {useFormAndValidation} from '../../validation/validation';
 import {useErrorProfileMessage} from '../../errors/errors';
-import * as ProjectApi from '../../projectApi/ProjectApi';
+import * as ProjectApi from '../../MainApi/MainApi';
 import myContext from '../../constants/myContext';
 import {ErrorMessage, SuccessMessage} from '../../components/Error/ErrorMessage';
 import {
@@ -37,13 +37,13 @@ export function Profile() {
       })
       .catch((err) => {
         if (err.status === 409) {
-          errorMessage({ALREADY_USED_EMAIL})
+          errorMessage(ALREADY_USED_EMAIL)
         } else if (err.status === 500) {
-          errorMessage({SERVER_ERROR})
+          errorMessage(SERVER_ERROR)
         } else if (err.status === 404) {
-          errorMessage({NOT_FOUND_PAGE})
+          errorMessage(NOT_FOUND_PAGE)
         } else {
-          errorMessage({BASIC_ERROR});
+          errorMessage(BASIC_ERROR);
         }
       })
     }
@@ -52,6 +52,10 @@ export function Profile() {
         event.preventDefault();
         ProjectApi.exit()
         .then(() => {
+          sessionStorage.removeItem('searchValue');
+          sessionStorage.removeItem('movies');
+          sessionStorage.removeItem('checkbox');
+          sessionStorage.removeItem('jwt');
           setUser({
             isLoggedIn: false,
         })
@@ -82,7 +86,7 @@ export function Profile() {
                         ? (<div className="profile__here-wrap">
                         <ul className="profile__here">
                           <li className="profile__here-item">
-                            
+                          <div className='profile__here-placeholder'>Имя -➤</div>
                               <input
                                 name="name"
                                 type="name"
@@ -98,7 +102,7 @@ export function Profile() {
                             
                           </li>
                           <li className="profile__here-item">
-                            
+                          <div className='profile__here-placeholder'>E-mail -➤</div>
                               <input
                                 name="email"
                                 type="email"
@@ -119,11 +123,11 @@ export function Profile() {
                         : (
                             <div className="profile__here">
                                 <div className="profile__here-item">
-                                    <div className='profile__here-placeholder'>Имя :</div>
+                                    <div className='profile__here-placeholder-static'>Имя</div>
                                     <div className='profile__here-user-text'>{thisuser.name}</div>
                                 </div>
                                 <div className="profile__here-item">
-                                <div className='profile__here-placeholder'>Email :</div>
+                                <div className='profile__here-placeholder-static'>E-mail</div>
                                 <div className='profile__here-user-text'>{thisuser.email}</div>
                                 </div>
                             </div>

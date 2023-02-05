@@ -7,7 +7,7 @@ import {useContext, useEffect, useState} from 'react';
 import myContext from '../../constants/myContext';
 import {useFormAndValidation} from '../../validation/validation';
 import {useErrorProfileMessage} from '../../errors/errors';
-import * as ProjectApi from '../../projectApi/ProjectApi';
+import * as ProjectApi from '../../MainApi/MainApi';
 import {ErrorMessage} from '../../components/Error/ErrorMessage';
 import {
   SERVER_ERROR,

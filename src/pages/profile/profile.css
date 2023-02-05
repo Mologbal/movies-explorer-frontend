@@ -38,30 +38,31 @@
 }
 
 .profile__here-input {
+  text-align: right;
   background-color: transparent;
-  text-align: center;
-  padding: 0;
-  margin: 0;
   outline: none;
   border: 0;
   font: 400 14px/17px 'Inter', sans-serif;
   color: var(--text-default);
-  width: 100%;
 }
 
 .profile__here-user-text {
   text-align: center;
 }
 
+.profile__here-placeholder-static {
+  margin-bottom: 5px;
+  text-align: center;
+}
+
 .profile__here-placeholder {
-  margin-bottom: 10px;
-  color: var(--input-third);
+  margin-top: 3px;
   text-align: center;
 }
 
 .profile__here-item {
-  
-  align-items: left;
+  display: flex;
+  justify-content: space-between;
   padding: 16px 0;
   font: 400 11px/13px 'Inter', sans-serif;
   color: var(--text-default);
@@ -73,7 +74,7 @@
 
 .profile__here-item:first-child {
   padding-top: 0;
-  border-bottom: 1px solid #e8e8e8;
+  border-bottom: 1px solid var(--input-second);
 }
 
 .profile__here-item:last-child {

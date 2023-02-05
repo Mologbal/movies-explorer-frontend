@@ -8,7 +8,7 @@ import {useEffect, useState} from 'react';
 import Preloader from '../../components/Preloader/Preloader';
 import useMoviesSizeOptions from '../../utils/MoviesSizeOptions/MoviesSizeOptions';
 import {getFilteredMovies} from '../../utils/FilterOptions/FilterOptions';
-import * as ProjectApi from '../../projectApi/ProjectApi';
+import * as ProjectApi from '../../MainApi/MainApi';
 import {SearchErrors} from '../../components/SearchErrors/SearchErrors';
 import useListId from '.././../utils/ListId/ListId'
 import {useSearchError} from '../../errors/errors';
@@ -122,7 +122,7 @@ export function Movies() {
         <div className="movies">
             <Header></Header>
             <main className="moviesBox">
-                <SearchForm searchFilms={searchFilms} letsSearch={letsSearch} writeInput={writeInput} useCheckBox={useCheckBox} searchInStorage={searchInStorage}/> 
+                <SearchForm searchFilms={searchFilms} updateListId={updateListId} letsSearch={letsSearch} writeInput={writeInput} useCheckBox={useCheckBox} searchInStorage={searchInStorage}/> 
                 {error
                         ? <SearchErrors>{error}</SearchErrors>
                         : user && <MoviesCardList movies={films} myId={myId} idList={idList}></MoviesCardList>

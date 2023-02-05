@@ -7,7 +7,7 @@ import {Link, useNavigate} from 'react-router-dom';
 import {useContext, useEffect, useState} from 'react';
 import myContext from '../../constants/myContext';
 import {ErrorMessage} from '../../components/Error/ErrorMessage';
-import * as ProjectApi from '../../projectApi/ProjectApi';
+import * as ProjectApi from '../../MainApi/MainApi';
 import {useErrorProfileMessage} from '../../errors/errors';
 import {
   ALREADY_USED_EMAIL,

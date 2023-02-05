@@ -4,7 +4,7 @@ import { SearchForm } from '../../components/SearchForm/SearchForm';
 import { MoviesCardList } from '../../components/MoviesCardList/MoviesCardList';
 import { Footer } from '../../components/Footer/Footer';
 import {useEffect, useState} from 'react';
-import * as ProjectApi from '../../projectApi/ProjectApi';
+import * as ProjectApi from '../../MainApi/MainApi';
 import {SearchErrors} from '../../components/SearchErrors/SearchErrors';
 import {getFilteredMovies} from '../../utils/FilterOptions/FilterOptions';
 import Preloader from '../../components/Preloader/Preloader';
@@ -12,8 +12,9 @@ import useListId from '.././../utils/ListId/ListId'
 import {
   SERVER_ERROR,
   NO_USER_SEARCH_DATA,
-  NOT_FOUND_THIS_FILM_SAVED
+  NOT_FOUND_THIS_FILM
 } from '../../constants/constants'
+import useMoviesSizeOptions from '../../utils/MoviesSizeOptions/MoviesSizeOptions';
 
 export function SavedMovies() {
   const [ films, setFilms ] = useState();
@@ -23,24 +24,7 @@ export function SavedMovies() {
   const [ isPreloader, setIsPreloader ] = useState(false);
   const { idList, myId, updateListId } = useListId();
   const [ error, setError ] = useState('');
-
-  function useMemory(memory, setMemory) {
-    useEffect(() => {
-      if (localStorage.getItem('memory')) {
-        setMemory(Boolean(localStorage.getItem('memory')))
-      }
-    }, [setMemory]);
-  
-    useEffect(() => {
-      if (memory) {
-        localStorage.setItem('memory', 'false');
-      } else {
-        localStorage.removeItem('memory');
-      }
-    }, [memory]);
-  }
-  useMemory(letsSearch, setLetsSearch)
-  
+  const { isMore, startSearch, wantMore} = useMoviesSizeOptions();
 
   useEffect(() => {
     setIsPreloader(true)
@@ -59,29 +43,58 @@ export function SavedMovies() {
       })
   }, [])
 
-  function searchFilms(e) {
-    e.preventDefault();
-    if (!searchInStorage) {
-      setError(NO_USER_SEARCH_DATA);
-      return;
-    }
-    setIsPreloader(true)
-    ProjectApi.getSavedMovies()
-      .then((query) => {
-        if (query.length < 1) {
-          setError(NOT_FOUND_THIS_FILM_SAVED);
+  useEffect(() => {
+    getMyFilms();
+}, [letsSearch])
+
+useEffect(() => {
+    getMyFilms();
+}, [])
+
+//метка
+const getMyFilms = () => {
+    if (!sessionStorage.getItem('movies')) {
+        return false
+    } else {
+        const result = getFilteredMovies(
+            JSON.parse(sessionStorage.getItem('movies')),
+            searchInStorage,
+            letsSearch
+        );
+        if (result.length < 1) {
+          setError(NOT_FOUND_THIS_FILM);
         } else {
-          setFilms(getFilteredMovies(query, searchInStorage, letsSearch));
-          setError('');
+            startSearch(result);
+            setError('');
         }
-      })
-      .catch(() => {
-        setError(SERVER_ERROR);
-      })
-      .finally(() => {
-        setIsPreloader(false)
-      })
+        return true;
+    }
+}
+
+//метка
+function searchFilms(e) {
+  e.preventDefault();
+  if (!searchInStorage) {
+    setError(NO_USER_SEARCH_DATA);
+    return;
   }
+  setIsPreloader(true)
+  ProjectApi.getSavedMovies()
+    .then((query) => {
+      if (query.length < 1) {
+        setError(NOT_FOUND_THIS_FILM);
+      } else {
+        setFilms(getFilteredMovies(query, searchInStorage, letsSearch));
+        setError('');
+      }
+    })
+    .catch(() => {
+      setError(SERVER_ERROR);
+    })
+    .finally(() => {
+      setIsPreloader(false)
+    })
+}
 
   function instantDeletion(id) {
     setFilms([

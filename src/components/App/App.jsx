@@ -2,8 +2,8 @@ import React from 'react';
 import {useEffect, useState} from 'react';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import myContext from '../../constants/myContext';
-import ProtectedRoutes from '../../projectApi/ProtectedRoutes/ProtectedRoutes';
-import * as ProjectApi from '../../projectApi/ProjectApi';
+import ProtectedRoutes from '../../MainApi/ProtectedRoutes/ProtectedRoutes';
+import * as ProjectApi from '../../MainApi/MainApi';
 import {
     SignIn,
     Main,
