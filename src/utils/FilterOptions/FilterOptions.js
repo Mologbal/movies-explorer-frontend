@@ -13,7 +13,7 @@ export function getFilteredMovies(item, answer, duration) {
     
     return item.filter((item) => {
         return (
-            item.country.toLowerCase().includes(searchValue) || item.director.toLowerCase().includes(searchValue) || item.nameRU.toLowerCase().includes(searchValue) || item.nameEN.toLowerCase().includes(searchValue) || item.description.toLowerCase().includes(searchValue)
+            item.nameRU.toLowerCase().includes(searchValue) || item.nameEN.toLowerCase().includes(searchValue) 
         );
     })
 }

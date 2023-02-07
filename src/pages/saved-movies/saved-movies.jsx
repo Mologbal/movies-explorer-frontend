@@ -17,14 +17,15 @@ import {
 import useMoviesSizeOptions from '../../utils/MoviesSizeOptions/MoviesSizeOptions';
 
 export function SavedMovies() {
-  const [ films, setFilms ] = useState();
-  const [ letsSearch, setLetsSearch ] = useState(false);
+  const [ films, setFilms ] = useState([]);
+  const [ letsSearch, setLetsSearch ] = useState(true);
   const [ searchInStorage, setSearchInStorage ] = useState('');
   const [ user, setUser ] = useState(false);
   const [ isPreloader, setIsPreloader ] = useState(false);
   const { idList, myId, updateListId } = useListId();
   const [ error, setError ] = useState('');
   const { isMore, startSearch, wantMore} = useMoviesSizeOptions();
+  
 
   useEffect(() => {
     setIsPreloader(true)
@@ -43,6 +44,7 @@ export function SavedMovies() {
       })
   }, [])
 
+
   useEffect(() => {
     getMyFilms();
 }, [letsSearch])
@@ -52,19 +54,24 @@ useEffect(() => {
 }, [])
 
 //метка
-const getMyFilms = () => {
-    if (!sessionStorage.getItem('movies')) {
+async function getMyFilms (e)  {
+ if (letsSearch) {
+   ProjectApi.getSavedMovies()
+  .then((res) => {
+    setFilms(res)})
+ }
+    if (!films) {
         return false
     } else {
-        const result = getFilteredMovies(
-            JSON.parse(sessionStorage.getItem('movies')),
+        const result = await getFilteredMovies(
+            films,
             searchInStorage,
             letsSearch
         );
         if (result.length < 1) {
           setError(NOT_FOUND_THIS_FILM);
         } else {
-            startSearch(result);
+            setFilms(result);
             setError('');
         }
         return true;

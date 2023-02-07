@@ -55,9 +55,9 @@ export function Profile() {
           sessionStorage.removeItem('searchValue');
           sessionStorage.removeItem('movies');
           sessionStorage.removeItem('checkbox');
-          sessionStorage.removeItem('jwt');
+          sessionStorage.removeItem('access_token');
           setUser({
-            isLoggedIn: false,
+            isLoggedIn: false,        
         })
         navigate('/');
       })

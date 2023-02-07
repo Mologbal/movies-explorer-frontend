@@ -17,6 +17,9 @@ export const LARGE_WIDTH_PX = 1279
 export const MEDIUM_WIDTH_NUMBER = 8
 export const MEDIUM_WIDTH_ARGUMENT = 6
 export const MEDIUM_WIDTH_NUMBER_PX = 768
+export const SMALL_WIDTH_NUMBER_PX = 480
+export const MEGA_SMALL_WIDTH_NUMBER_PX = 320
+
 export const SMALL_WIDTH_NUMBER = 5
 export const SMALL_WIDTH_ARGUMENT = 3
 

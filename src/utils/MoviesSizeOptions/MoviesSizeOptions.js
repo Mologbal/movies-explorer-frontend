@@ -9,7 +9,9 @@ import {
     SMALL_WIDTH_NUMBER,
     SMALL_WIDTH_ARGUMENT,
     MEDIUM_WIDTH_NUMBER_PX,
-    LARGE_WIDTH_PX
+    LARGE_WIDTH_PX,
+    SMALL_WIDTH_NUMBER_PX,
+    MEGA_SMALL_WIDTH_NUMBER_PX
 } from '../../constants/constants'
 
 const useMoviesSizeOptions = () => {
@@ -22,15 +24,15 @@ const useMoviesSizeOptions = () => {
 
     useEffect(() => {
         const width = document.documentElement.clientWidth;
-        if (width > LARGE_WIDTH_PX) {
-            setRowFilms(LARGE_WIDTH_NUMBER)
-            setArgument(LARGE_WIDTH_ARGUMENT)
-        } else if (width >= MEDIUM_WIDTH_NUMBER_PX && width <= LARGE_WIDTH_PX) {
-            setRowFilms(MEDIUM_WIDTH_NUMBER)
-            setArgument(MEDIUM_WIDTH_ARGUMENT)
-        } else if (width < MEDIUM_WIDTH_NUMBER_PX) {
-            setRowFilms(SMALL_WIDTH_NUMBER)
-            setArgument(SMALL_WIDTH_ARGUMENT)
+        if (width > MEDIUM_WIDTH_NUMBER_PX) {
+            setRowFilms(12)
+            setArgument(9)
+        } else if (width > SMALL_WIDTH_NUMBER_PX && width <= MEDIUM_WIDTH_NUMBER_PX) {
+            setRowFilms(8)
+            setArgument(6)
+        } else if (width <= SMALL_WIDTH_NUMBER_PX) {
+            setRowFilms(5)
+            setArgument(3)
         }
     }, [allFilms])
 

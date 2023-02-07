@@ -8,14 +8,15 @@ import useListId from '.././../utils/ListId/ListId'
 
 export const MoviesCard = ({movie, savedPage = false, isSaved, instantDeletion, myId}) => {
     const [savedFilm, setIsSavedFilm] = useState(isSaved)
-    const [please, setPleace] = useState(2)
+
     const {pathname} = useLocation();
     const {idList, updateListId} = useListId();
+    const [cardId, setCardId] = useState(movie._id || '')
+    
 
-  //24 часа пытался понять как сделать функционал "ловли на лету" ID для удаления сразу после лайка, так и не понял. Из-за этого сделал "костыль-защиту please" которая не даёт наспамить одинаковых карточек. Постарался исправить все остальные ошибки.
     async function likeFilm() {
       setIsSavedFilm(true);
-      if (please === 2) {
+      
       const movieOptions = {
         country: movie.country,
         director: movie.director,
@@ -30,20 +31,21 @@ export const MoviesCard = ({movie, savedPage = false, isSaved, instantDeletion, 
         thumbnail: IMAGES_URL + movie.image.url,
       };
       try {
-        await ProjectApi.saveMovie(movieOptions)
+        const savedMovie = await ProjectApi.saveMovie(movieOptions)
+          setCardId(savedMovie._id)
           setIsSavedFilm(true);
-          setPleace(1)
+          
         }
        catch(err) {
         console.log(err)
-    }}
+    }
     }
 
     async function deleteMyLike() {
       try {
         const testId = myId(movie.id || movie.movieId );
         const thisId = movie.id || movie.movieId;
-         await ProjectApi.deleteSavedMovie(testId)
+         await ProjectApi.deleteSavedMovie(cardId)
         .then((card) => {if (savedPage || savedFilm) {
           instantDeletion(thisId);
           console.log('я пришёл')
@@ -53,11 +55,11 @@ export const MoviesCard = ({movie, savedPage = false, isSaved, instantDeletion, 
         }})
         const newSaved = await ProjectApi.getSavedMovies();
         setIsSavedFilm(newSaved);
-        setPleace(0)
+        
       } catch {
         console.log('Disliked');
         setIsSavedFilm(false)
-        setPleace(0)
+        
       }
     }
 

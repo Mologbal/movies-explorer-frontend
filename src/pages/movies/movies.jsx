@@ -9,6 +9,7 @@ import Preloader from '../../components/Preloader/Preloader';
 import useMoviesSizeOptions from '../../utils/MoviesSizeOptions/MoviesSizeOptions';
 import {getFilteredMovies} from '../../utils/FilterOptions/FilterOptions';
 import * as ProjectApi from '../../MainApi/MainApi';
+import * as MoviesApi from '../../MainApi/MoviesApi';
 import {SearchErrors} from '../../components/SearchErrors/SearchErrors';
 import useListId from '.././../utils/ListId/ListId'
 import {useSearchError} from '../../errors/errors';
@@ -25,7 +26,7 @@ export function Movies() {
     const [user, setUser] = useState(false);
     const [isPreloader, setisPreloader] = useState(false);
     const [letsSearch, setLetsSearch] = useState(false);
-    
+    const [searchInStorage, setSearchInStorage] = useState(sessionStorage.getItem('searchValue') || '');
      function useMemory(memory, setMemory) {
         useEffect(() => {
           if (localStorage.getItem('memory')) {
@@ -35,7 +36,7 @@ export function Movies() {
       
         useEffect(() => {
           if (memory) {
-            localStorage.setItem('memory', 'false');
+            localStorage.setItem('memory', 'true');
           } else {
             localStorage.removeItem('memory');
           }
@@ -91,8 +92,9 @@ export function Movies() {
           } else {
           sessionStorage.setItem('searchValue', searchInStorage)}
           if (!getMyFilms()) {
+            event.preventDefault();
             setisPreloader(true);
-            ProjectApi.getAllMovies()
+            MoviesApi.getAllMovies()
               .then((movies) => {
                 const query = getFilteredMovies(movies, searchInStorage, letsSearch);
                 if (query.length < 1) {
@@ -113,7 +115,7 @@ export function Movies() {
         setLetsSearch(!letsSearch);
     }
 
-    const [searchInStorage, setSearchInStorage] = useState(sessionStorage.getItem('searchValue') || '');
+    
     function writeInput(event) {
         setSearchInStorage(event.target.value);
     }
