@@ -21,20 +21,31 @@ const useMoviesSizeOptions = () => {
     const [figure, setFigure] = useState(BASICAL_NUMBER);
     const [rowFilms, setRowFilms] = useState(BASICAL_NUMBER);
     const [argument, setArgument] = useState(BASICAL_NUMBER);
+    const [windowWidth, setWindowWidth] = useState(window.innerWidth)
 
-    useEffect(() => {
+    function handleResize()  {
         const width = document.documentElement.clientWidth;
-        if (width > MEDIUM_WIDTH_NUMBER_PX) {
+        if (width > 768) {
             setRowFilms(12)
             setArgument(9)
-        } else if (width > SMALL_WIDTH_NUMBER_PX && width <= MEDIUM_WIDTH_NUMBER_PX) {
+        } else if (width > 420 && width <= 768) {
             setRowFilms(8)
             setArgument(6)
-        } else if (width <= SMALL_WIDTH_NUMBER_PX) {
+        } else if (width <= 420) {
             setRowFilms(5)
             setArgument(3)
         }
-    }, [allFilms])
+    }
+
+    function checkWindowWidth() {
+        setWindowWidth(window.innerWidth)
+    }
+
+      useEffect(() => {
+        window.addEventListener('resize', checkWindowWidth)
+        handleResize()
+      }, [windowWidth])
+
 
     useEffect(() => {
         setIsMore(figure < allFilms.length);

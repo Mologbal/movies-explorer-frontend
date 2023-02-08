@@ -25,23 +25,22 @@ export function Movies() {
     const {idList, myId, updateListId} = useListId();
     const [user, setUser] = useState(false);
     const [isPreloader, setisPreloader] = useState(false);
-    const [letsSearch, setLetsSearch] = useState(false);
+    const [letsSearch, setLetsSearch] = useState((localStorage.getItem('checkbox') === 'true'));
     const [searchInStorage, setSearchInStorage] = useState(sessionStorage.getItem('searchValue') || '');
+
      function useMemory(memory, setMemory) {
         useEffect(() => {
-          if (localStorage.getItem('memory')) {
-            setMemory(Boolean(localStorage.getItem('memory')))
-          }
-        }, [setMemory]);
-      
-        useEffect(() => {
-          if (memory) {
-            localStorage.setItem('memory', 'true');
-          } else {
-            localStorage.removeItem('memory');
-          }
-        }, [memory]);
-      }
+                setMemory((localStorage.getItem('checkbox') === 'true'))
+          }, [setMemory]);
+        
+          useEffect(() => {
+            if (memory) {
+              localStorage.setItem('checkbox', 'false');
+            } else {
+                localStorage.setItem('checkbox', 'true');
+            }
+          }, [memory]);
+        }
       useMemory(letsSearch, setLetsSearch)
 
     useEffect(() => {
@@ -63,14 +62,14 @@ export function Movies() {
         getMyFilms();
     }, [])
 
-    //метка
+
     const getMyFilms = () => {
         if (!sessionStorage.getItem('movies')) {
             return false
         } else {
             const result = getFilteredMovies(
                 JSON.parse(sessionStorage.getItem('movies')),
-                searchInStorage,
+                searchInStorage, 
                 letsSearch
             );
             if (result.length < 1) {
@@ -83,7 +82,7 @@ export function Movies() {
         }
     }
     
-    //метка
+
     function searchFilms(event) {
         event.preventDefault();
         if (!searchInStorage) {

@@ -19,7 +19,7 @@ export function Filter({
                 name={name}
                 checked={checked}
                 onChange={handler}></input>
-            <span className={`filter__style ${checked && "filter__style_active"}`}></span>
+            <span className={`filter__style ${!checked && "filter__style_active"}`}></span>
             <span className="filter__label">{label}</span>
         </label>
     );

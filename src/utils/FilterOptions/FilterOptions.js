@@ -8,7 +8,7 @@ export function getFilteredMovies(item, answer, duration) {
     const searchValue = answer.toLowerCase();
     if (!duration) 
         item = item.filter((item) => {
-            return item.duration > FILM_DURATION;
+            return item.duration <= FILM_DURATION;
         });
     
     return item.filter((item) => {
