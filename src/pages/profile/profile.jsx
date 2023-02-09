@@ -52,10 +52,10 @@ export function Profile() {
         event.preventDefault();
         ProjectApi.exit()
         .then(() => {
-          sessionStorage.removeItem('searchValue');
-          sessionStorage.removeItem('movies');
-          sessionStorage.removeItem('checkbox');
-          sessionStorage.removeItem('access_token');
+          localStorage.removeItem('searchValue');
+          localStorage.removeItem('movies');
+          localStorage.removeItem('checkbox');
+          localStorage.removeItem('access_token');
           setUser({
             isLoggedIn: false,        
         })

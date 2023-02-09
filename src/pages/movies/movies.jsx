@@ -26,7 +26,7 @@ export function Movies() {
     const [user, setUser] = useState(false);
     const [isPreloader, setisPreloader] = useState(false);
     const [letsSearch, setLetsSearch] = useState((localStorage.getItem('checkbox') === 'true'));
-    const [searchInStorage, setSearchInStorage] = useState(sessionStorage.getItem('searchValue') || '');
+    const [searchInStorage, setSearchInStorage] = useState(localStorage.getItem('searchValue') || '');
 
      function useMemory(memory, setMemory) {
         useEffect(() => {
@@ -64,11 +64,11 @@ export function Movies() {
 
 
     const getMyFilms = () => {
-        if (!sessionStorage.getItem('movies')) {
+        if (!localStorage.getItem('movies')) {
             return false
         } else {
             const result = getFilteredMovies(
-                JSON.parse(sessionStorage.getItem('movies')),
+                JSON.parse(localStorage.getItem('movies')),
                 searchInStorage, 
                 letsSearch
             );
@@ -89,7 +89,7 @@ export function Movies() {
             errorMessage(NO_USER_SEARCH_DATA);
             return;
           } else {
-          sessionStorage.setItem('searchValue', searchInStorage)}
+          localStorage.setItem('searchValue', searchInStorage)}
           if (!getMyFilms()) {
             event.preventDefault();
             setisPreloader(true);
@@ -99,7 +99,7 @@ export function Movies() {
                 if (query.length < 1) {
                     errorMessage(NOT_FOUND_THIS_FILM);
                 } else {
-                  sessionStorage.setItem('movies', JSON.stringify(movies));
+                  localStorage.setItem('movies', JSON.stringify(movies));
                   startSearch(query);
                   errorMessage('');
                 }
