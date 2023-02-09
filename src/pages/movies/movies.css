@@ -6,17 +6,17 @@
   margin: 0 auto;
 }
 
-.movies__box {
+.moviesBox {
   background-color: var(--background-default);
 }
 
-.movies__more {
+.moviesMore {
   display: flex;
   margin: auto;
   padding: 55px 50px 70px 75px;
 }
 
-.movies__more-button {
+.moviesMore-button {
   width: 320px;
   height: 36px;
   margin: auto;
@@ -28,7 +28,7 @@
 }
 
 @media screen and (max-width: 1279px) {
-  .movies__more {
+  .moviesMore {
     padding: 35px 30px 80px;
   }
 }
@@ -38,11 +38,11 @@
     grid-template-rows: 74px 1fr 243px;
   }
 
-  .movies__more {
+  .moviesMore {
     padding: 50px 10px 80px;
   }
 
-  .movies__more-button {
+  .moviesMore-button {
     width: 240px;
   }
 }

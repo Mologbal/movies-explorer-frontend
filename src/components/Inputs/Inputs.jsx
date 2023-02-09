@@ -9,7 +9,8 @@ export function Inputs({
     max,
     required = true,
     errorText = '',
-    min
+    min,
+    pattern,
 }) {
 
     return (
@@ -23,6 +24,7 @@ export function Inputs({
                 minLength={min}
                 maxLength={max}
                 required={required}
+                pattern={pattern}
                 className={`input__input ${errorText && 'input__input_error'}`}/> {errorText && <span className="input__error">{errorText}</span>}
         </label>
     );

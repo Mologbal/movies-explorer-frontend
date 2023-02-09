@@ -1,29 +1,66 @@
 import './signin.css';
 import Logo from '../../components/Logo/Logo';
-import Button from '../../components/Button/Button';
-import { useEffect } from 'react';
-import { Inputs } from '../../components/Inputs/Inputs';
-import { useNavigate, Link } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { useFormAndValidation } from '../../hooks/useFormAndValidation';
-//redux
-import {switchLogin} from '../../store/userSlice';
+import {Inputs} from '../../components/Inputs/Inputs';
+import {Button} from '../../components/Button/Button';
+import {Link, useNavigate} from 'react-router-dom';
+import {useContext, useEffect, useState} from 'react';
+import myContext from '../../constants/myContext';
+import {useFormAndValidation} from '../../validation/validation';
+import {useErrorProfileMessage} from '../../errors/errors';
+import * as ProjectApi from '../../MainApi/MainApi';
+import {ErrorMessage} from '../../components/Error/ErrorMessage';
+import {
+  SERVER_ERROR,
+  NOT_FOUND_PAGE,
+  BASIC_ERROR,
+  WRONG_DATA,
+} from '../../constants/constants'
 
-export function SignInPage() {
-    const history = useNavigate();
-    const dispatch = useDispatch();
-    const {values, isValid, errors, setValues, handleChange} = useFormAndValidation();
+export function SignIn() {
+    const navigate = useNavigate();
+    const {values, handleChange, errors, isValid, setValues } = useFormAndValidation();
+    const [isPending, setIsPending] = useState(false);
+    const { thisuser, setUser } = useContext(myContext);
+    const {error, errorMessage} = useErrorProfileMessage();
+
+    useEffect(() => {
+      if (thisuser.isLoggedIn) {
+        navigate('/');
+      }
+    }, [thisuser])
 
     function handleSubmit(event) {
         event.preventDefault();
-        if (isValid) {
-            dispatch(switchLogin());
-            history('/movies');
-        }
+        setIsPending(true);
+        ProjectApi.authorise(values)
+          .then((user) => {
+            setUser({
+              name: user.name,
+              email: user.email,
+              id: user._id,
+              isLoggedIn: true,
+            });
+            navigate('/movies');
+          })
+          .catch(err => {
+             if (err.status = 500) {
+              errorMessage(WRONG_DATA);
+            } 
+            else if (err.status = 404) {
+              errorMessage(NOT_FOUND_PAGE);
+            }
+            else if (err.status = 401) {
+              errorMessage(SERVER_ERROR);
+            }
+            else {
+              errorMessage(BASIC_ERROR);
+            }
+          })
+          .finally(() => setIsPending(false));
     }
 
     useEffect(() => {
-        setValues({email: 'pochta@yandex.ru', password: 'password'});
+        setValues({email: '', password: ''});
     }, [setValues]);
 
     return (
@@ -32,7 +69,9 @@ export function SignInPage() {
             <h1 className="signin__hello">Рады видеть!</h1>
             <div className="signin__inputs">
                 <Inputs
+                    type='email'
                     name="email"
+                    pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,10})+$"
                     value={values.email}
                     handler={handleChange}
                     min="2"
@@ -49,7 +88,8 @@ export function SignInPage() {
                     placeholder="Пароль"></Inputs>
             </div>
             <div className="signin__buttons">
-                <Button className="signin__button" type="submit">
+                <Button className="signin__button" type="submit" disabled={!(isValid && !isPending)}>
+                <ErrorMessage>{ error }</ErrorMessage>
                     Войти
                 </Button>
                 <div className="signin__text">

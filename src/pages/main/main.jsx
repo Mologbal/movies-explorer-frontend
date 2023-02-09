@@ -7,7 +7,7 @@ import { Techs } from '../../components/Techs/Techs';
 import { AboutMe } from '../../components/AboutMe/AboutMe';
 import { Footer } from '../../components/Footer/Footer';
 
-export function MainPage() {
+export function Main() {
     return (
         <div className="main">
             <Header></Header>
